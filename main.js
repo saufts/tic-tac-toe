@@ -23,5 +23,27 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     document.querySelector('.modal-wrapper').setAttribute('hidden', true);
+    initializeGame(data);
+    
+});
+
+const initializeVariables = (data) => {
+    data.choice = +data.choice; // convert a string to a number
+    data.board = [0,1,2,3,4,5,6,7,8];
+    data.player1 = "X";
+    data.player2 = "O";
+    data.round = "0";
+    data.currentPlayer = "X";
+    data.gameOver = false;
+}
+
+const initializeGame = (data) => {
+    // initialize game variables
+    initializeVariables(data);
+
     console.log(data);
-})
+    // add event listeners to the game
+
+
+
+}
