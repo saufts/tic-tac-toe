@@ -37,13 +37,30 @@ const initializeVariables = (data) => {
     data.gameOver = false;
 }
 
+const addEventListenersToGameboard = (data) => {
+    document.querySelectorAll('.box').forEach(box => {
+        box.addEventListener('click', (event) => {
+            playMove(event.target, data);
+        })
+    })
+}
+
 const initializeGame = (data) => {
     // initialize game variables
     initializeVariables(data);
 
-    console.log(data);
     // add event listeners to the game
+    addEventListenersToGameboard(data);
+};
 
-
-
+const playMove = (box, data) => {
+    // is game over? If fame over, don't do anything
+    if(data.gameOver) {
+        return;
+    }
+    // check if game box has a letter in it, if so, don't do anything
+    if(data.board[box.id] === 'X' || data.board[box.id] === 'O' ) {
+        return;
+    }
+    console.log(box, data);
 }
